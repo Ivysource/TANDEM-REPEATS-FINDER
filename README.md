@@ -446,3 +446,35 @@ Enhanced Alignment File: We have modified the presentation of the alignment file
 Automatic Redundancy Removal: The program now reports only the smallest period size for a repeat unless a larger period size has a significantly higher score.
 
 Windows Version Now Available: A Windows version of the program is now available for download. This version of the the program can be run under Windows 95/98 and Windows NT 4. Please visit our Download Page for more details.
+
+
+  system(paste("C:/Users/vmobegi/Documents/muscle3.8.31_i86win32.exe",
+	'-in Rhop148seqs.txt  -out Rhop148seqs.afa'))
+
+system(paste("C:/Users/vmobegi/Documents/trf404.dos.exe",
+   'Rhop148seqs.txt 2 7 7 80 10 50 500 -m -h'))
+
+system(paste("C:/Users/vmobegi/Documents/muscle3.8.31_i86win32.exe ",
+	'-in Rhop148seqs.txt.2.7.7.80.10.50.500.mask  -out Rhop148seqs.txt.2.7.7.80.10.50.500.afa'))
+
+
+#Masking varied mismatch and Indel and doing MSA
+for(i in 3:7){
+
+			for(j in 5:7){
+
+			 system(paste("C:/Users/vmobegi/Documents/trf404.dos.exe",
+		 	'Rhop148seqs.txt 2',i,j,'80 10 40 500 -m -h'))
+                  
+		 	system(paste("C:/Users/vmobegi/Documents/muscle3.8.31_i86win32.exe ",
+			 '-in Rhop148seqs.txt.2.',i,'.',j,'.','80.10.40.500.mask -out sequences.afa', sep=""))
+}
+}
+
+
+#varying Indel parameter
+for(j in 5:7){
+
+			system(paste("C:/Users/vamobegi/Documents/trf404.dos.exe",
+			 'Rhop148seqs.txt 2 7' ,j,'80 10 40 500 -m -h'))
+}
